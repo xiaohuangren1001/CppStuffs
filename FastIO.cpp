@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <iostream>
+#include <cmath>
 using namespace std;
 namespace FastIO
 {
@@ -23,12 +24,18 @@ namespace FastIO
 	};
 	class Printer
 	{
+	private:
+		int precision;
 	public:
 		Printer operator<<(int i);
 		Printer operator<<(long long i);
 		Printer operator<<(char i);
 		Printer operator<<(const char *c);
 		Printer operator<<(string s);
+		Printer operator<<(double d);
+		void setprecision(int x) {
+			precision = x;
+		}
 		template <typename A>
 		inline Printer operator<<(A &a)
 		{
@@ -147,6 +154,10 @@ namespace FastIO
 	}
 	Printer Printer::operator<<(int i)
 	{
+		if (i == 0) {
+			putchar('0');
+			return *this;
+		}
 		int tmp = i > 0 ? i : -i;
 		if (i < 0) 
 		{
@@ -194,13 +205,41 @@ namespace FastIO
 		for (string::iterator i = s.begin(); i < s.end(); i++) putchar(*i);
 		return *this;
 	}
+	Printer Printer::operator<<(double d)
+	{
+		int n = pow(10, precision);
+		double abs = d > 0 ? d : -d;
+		if (d == 0)
+		{
+			putchar('0');
+			putchar('.');
+			putchar('0');
+			return *this;
+		}
+		if (d < 0)
+		{
+			putchar('-');
+		}
+		long long zh = (long long) d;
+		long long xi = (long long)(d * n) % n;
+		long long tmp = zh > 0 ? zh : -zh;
+		int cnt = 0;
+		char F[200];
+		while (tmp) F[cnt++] = char(tmp % 10 + '0'), tmp /= 10;
+		while (cnt) putchar(F[--cnt]);
+		putchar('.');
+		int bit[10], p = 0, i;
+		for (; p < precision; xi /= 10) bit[++p] = xi % 10;
+		for (i = p; i > 0; i--) putchar(bit[p--] + '0');
+		return *this;
+	}
 }
 using namespace FastIO;
 int main()
 {
 	double x;
 	qin >> x;
-	cout << "Input end" <<endl;
-	cout << x;
+	qout.setprecision(6);
+	qout << x << endl;
 	return 0;
 }
