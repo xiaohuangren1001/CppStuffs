@@ -20,6 +20,7 @@ using namespace std;
 #define min8(a, b, c, d, e, f, g, h) min(min7(a, b, c, d, e, f, g), h)
 #define min9(a, b, c, d, e, f, g, h, i) min(min8(a, b, c, d, e, f, g, h), i)
 #define min10(a, b, c, d, e, f, g, h, i, j) min(min9(a, b, c, d, e, f, g, h, i), j)
+
 bool is_prime(int a)
 {
 	for (int i = 2; i * i < a; i++)
