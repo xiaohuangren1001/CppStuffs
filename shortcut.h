@@ -12,7 +12,14 @@ using namespace std;
 #define max8(a, b, c, d, e, f, g, h) max(max7(a, b, c, d, e, f, g), h)
 #define max9(a, b, c, d, e, f, g, h, i) max(max8(a, b, c, d, e, f, g, h), i)
 #define max10(a, b, c, d, e, f, g, h, i, j) max(max9(a, b, c, d, e, f, g, h, i), j)
-
+#define min3(a, b, c) min(min(a, b), c)
+#define min4(a, b, c, d) min(min3(a, b, c), d)
+#define min5(a, b, c, d, e) min(min4(a, b, c, d), e)
+#define min6(a, b, c, d, e, f) min(min5(a, b, c, d, e), f)
+#define min7(a, b, c, d, e, f, g) min(min6(a, b, c, d, e, f), g)
+#define min8(a, b, c, d, e, f, g, h) min(min7(a, b, c, d, e, f, g), h)
+#define min9(a, b, c, d, e, f, g, h, i) min(min8(a, b, c, d, e, f, g, h), i)
+#define min10(a, b, c, d, e, f, g, h, i, j) min(min9(a, b, c, d, e, f, g, h, i), j)
 bool is_prime(int a)
 {
 	for (int i = 2; i * i < a; i++)
