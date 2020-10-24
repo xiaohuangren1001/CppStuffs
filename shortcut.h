@@ -54,3 +54,5 @@ string reverse(string s)
 	}
 	return s;
 }
+const bool True = true;
+const bool False = false;
