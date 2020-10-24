@@ -43,6 +43,11 @@ void print(T t)
 {
 	cout << t;
 }
+template <typename T>
+int len(T *t)
+{
+	return sizeof(t)/sizeof(T);
+}
 string reverse(string s)
 {
 	int l = s.length();
